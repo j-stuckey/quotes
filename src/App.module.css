@@ -18,3 +18,11 @@
 	border-radius: 100px;
 	min-width: 300px;
 }
+
+.quote {
+	max-width: 600px;
+}
+
+.author {
+	font-style: italic;
+}

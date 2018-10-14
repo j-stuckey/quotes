@@ -9,22 +9,34 @@ class App extends Component {
 
 		this.state = {
 			quotes: [
-				{ quote: "You're doing fine!", author: 'Me' },
 				{
-					quote: 'Why?',
-					author: 'Who knows'
+					quote: 'Learning never exhausts the mind.',
+					author: 'Leonardo da Vinci'
 				},
 				{
-					quote: '1',
-					author: 'Who knows'
+					quote:
+						'Think in the morning. Act in the noon. Eat in the evening. Sleep in the night.',
+					author: 'William Blake'
 				},
 				{
-					quote: '2',
-					author: 'Who knows'
+					quote:
+						'If you cannot do great things, do small things in a great way.',
+					author: 'Napolean Hill'
 				},
 				{
-					quote: '3',
-					author: 'Who knows'
+					quote:
+						"I have not failed. I've just found 10,000 ways that won't work.",
+					author: 'Thomas Edison'
+				},
+				{
+					quote:
+						'Education is the most powerful weapon which you can use to change the world.',
+					author: 'Nelson Mandela'
+				},
+				{
+					quote:
+						'The secret of getting ahead is getting started. The secret of getting started is breaking your complex, overwhelming tasks into small manageable tasks, and then starting on the first one.',
+					author: 'Mark Twain'
 				}
 			],
 			i: 0,
@@ -50,10 +62,11 @@ class App extends Component {
 		});
 	}
 
-	startApp() {
+	startApp(quotes) {
 		this.setState({
 			...this.state,
-			display: !this.state.display
+			display: !this.state.display,
+			quotes: this.shuffle(quotes)
 		});
 	}
 
@@ -63,11 +76,13 @@ class App extends Component {
 
 		const { quotes } = this.state;
 
+		// if the state display is false
+		// displays a button that will start the cycle of quotes
 		if (!this.state.display) {
 			return (
 				<div className={styles.div}>
 					<button
-						onClick={() => this.startApp()}
+						onClick={() => this.startApp(this.state.quotes)}
 						className={styles.startButton}
 					>
 						<h1>My Favorite Quotes</h1>
@@ -76,17 +91,22 @@ class App extends Component {
 			);
 		}
 
-		return (
-			<div className={styles.div}>
-				<button
-					className={styles.button}
-					onClick={() => this.handleClick()}
-				>
-					<h1>{quotes[index].quote} </h1>
-					<h2>- {quotes[index].author}</h2>
-				</button>
-			</div>
-		);
+		// if display is true then cycle through quotes on click
+		else {
+			return (
+				<div className={styles.div}>
+					<button
+						className={styles.button}
+						onClick={() => this.handleClick()}
+					>
+						<h1 className={styles.quote}>{quotes[index].quote} </h1>
+						<h2 className={styles.author}>
+							- {quotes[index].author}
+						</h2>
+					</button>
+				</div>
+			);
+		}
 	}
 }
 
