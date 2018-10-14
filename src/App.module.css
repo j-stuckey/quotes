@@ -1,0 +1,20 @@
+.div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	top: 200px;
+}
+
+.button {
+	border: none;
+	background: none;
+	min-width: 200px;
+}
+
+.startButton {
+	background: green;
+	color: white;
+	border-radius: 100px;
+	min-width: 300px;
+}
